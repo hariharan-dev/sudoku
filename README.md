@@ -12,8 +12,7 @@ Apart from the sudoku's core functionality. This game contains some special feat
 2. Hints
    Player can click the hint button and then tap on the unfilled fields to automatically fill the field.
 
-3. Easy Guess
-   Fields to consider while guessing a field.
+3. Easy Guessing
    Whenever a player feels a bit difficult to guess a field, he/she can simply click that field to narrow down the options for them by highlighting that field's associates (field's vertical neighbours, field's horizontal neighbours and field's 3 X 3 neighbours).
 
 4. Show Wrong inputs.
@@ -25,3 +24,6 @@ Apart from the sudoku's core functionality. This game contains some special feat
 
 6. Pause & Continue
    A player can pause the game, do their work and comeback later to continue playing the same game.
+
+P.S: The game could look a bit a squished in some mobiles. With more time I will fix them :). Kindly view in a computer for better experience.
+
