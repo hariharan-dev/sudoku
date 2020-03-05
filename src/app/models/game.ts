@@ -27,6 +27,12 @@ export class Game {
     this.isPaused = false;
   }
 
+  restartGameIfPaused() {
+    if (this.isPaused) {
+      this.startTimer();
+    }
+  }
+
   pauseTimer() {
     this.isPaused = true;
     clearInterval(this.timerRef);
@@ -39,11 +45,18 @@ export class Game {
   toggleEraseMode() {
     this.eraseMode = !this.eraseMode;
     this.hintMode = false;
+    this.restartGameIfPaused();
   }
 
   toggleHintMode() {
     this.hintMode = !this.hintMode;
     this.eraseMode = false;
+    this.restartGameIfPaused();
+  }
+
+  toggleShowErrors() {
+    this.showErrors = !this.showErrors;
+    this.restartGameIfPaused();
   }
 
   get gameTime(): Observable<String> {

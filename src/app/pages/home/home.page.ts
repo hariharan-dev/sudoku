@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation } from "@angular/core";
 import { Game } from "src/app/models/game";
 import { Cell } from "src/app/models/cell";
+import { AlertController } from "@ionic/angular";
 
 @Component({
   selector: "app-home",
@@ -13,7 +14,7 @@ export class HomePage {
   oldSelectedRow: number;
   oldSelectedCol: number;
 
-  constructor() {}
+  constructor(private alertCtrl: AlertController) {}
 
   get playerSudokuRows() {
     return Object.keys(this.game.playerSudoku.rows);
@@ -31,6 +32,7 @@ export class HomePage {
     }
     let keypad = targetId.split("-")[1];
     this.game.setSelectedKey(keypad);
+    this.game.restartGameIfPaused();
   }
 
   cellListener(event) {
@@ -40,6 +42,7 @@ export class HomePage {
     }
     let [, row, col] = targetId.split("-");
     this.handleCellClick(Number(row), Number(col));
+    this.game.restartGameIfPaused();
   }
 
   /**
@@ -79,7 +82,7 @@ export class HomePage {
 
   setPlayerSelectedValue(row: number, col: number) {
     if (!this.game.selectedKey) {
-      alert("Select a key from keypad");
+      this.showAlert("Oops!", "", "Select a key from keypad");
       return;
     }
     this.game.playerSudoku.updateValue(
@@ -99,8 +102,9 @@ export class HomePage {
     setTimeout(() => {
       if (this.game.playerSudoku.validateSudoku()) {
         this.game.gameTime.subscribe(data => {
-          alert("Wohoo! You solved it in " + data);
-          this.newGame();
+          this.showAlert("Yay!", "", "You solved it in " + data).then(() =>
+            this.newGame()
+          );
         });
       }
     });
@@ -198,5 +202,16 @@ export class HomePage {
 
   openGithub() {
     window.open("https://github.com/hariharan-dev/sudoku", "_blank");
+  }
+
+  async showAlert(header, subHeader, message) {
+    let alert = await this.alertCtrl.create({
+      header,
+      subHeader,
+      message,
+      buttons: ["OK"]
+    });
+    await alert.present();
+    return await alert.onDidDismiss();
   }
 }
