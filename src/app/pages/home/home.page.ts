@@ -19,6 +19,11 @@ export class HomePage {
     return Object.keys(this.game.playerSudoku.rows);
   }
 
+  /**
+   * Keypad listener.
+   * Highlights the selected key.
+   * @param event
+   */
   keyListener(event) {
     const targetId: string = event.target.id;
     if (!targetId.startsWith("key")) {
@@ -86,6 +91,10 @@ export class HomePage {
     this.isGameSolved();
   }
 
+  /**
+   * Checks whether sudoku is valid or not
+   * If valid then alerts the user and starts a new game.
+   */
   isGameSolved() {
     setTimeout(() => {
       if (this.game.playerSudoku.validateSudoku()) {
@@ -107,19 +116,21 @@ export class HomePage {
    * @param col
    */
   highlightCells(row: number, col: number) {
+    let whiteColor = "white";
+    let lavendar = "#e2e7ed";
     if (this.oldSelectedRow !== undefined) {
       this.colorifyBlock(
         this.findSquares(this.oldSelectedRow),
         this.findSquares(this.oldSelectedCol),
-        "white"
+        whiteColor
       );
-      this.colorifyRow(this.oldSelectedRow, "white");
-      this.colorifyCol(this.oldSelectedCol, "white");
-      this.colorifyCell(row, col, "white");
+      this.colorifyRow(this.oldSelectedRow, whiteColor);
+      this.colorifyCol(this.oldSelectedCol, whiteColor);
+      this.colorifyCell(row, col, whiteColor);
     }
-    this.colorifyBlock(this.findSquares(row), this.findSquares(col), "#e2e7ed");
-    this.colorifyRow(row, "#e2e7ed");
-    this.colorifyCol(col, "#e2e7ed");
+    this.colorifyBlock(this.findSquares(row), this.findSquares(col), lavendar);
+    this.colorifyRow(row, lavendar);
+    this.colorifyCol(col, lavendar);
     this.colorifyCell(row, col, "#bbdefb");
     this.oldSelectedRow = row;
     this.oldSelectedCol = col;
@@ -183,5 +194,9 @@ export class HomePage {
       return;
     }
     document.getElementById(`cell-${row}-${col}`).style.backgroundColor = color;
+  }
+
+  openGithub() {
+    window.open("https://github.com/hariharan-dev/sudoku", "_blank");
   }
 }

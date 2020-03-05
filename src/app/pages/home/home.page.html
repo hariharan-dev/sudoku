@@ -4,7 +4,7 @@
     <ion-row class="game-header">
       <div (click)="game.showErrors = !game.showErrors">
         Show Mistakes
-        <ion-toggle [checked]="game.showErrors"></ion-toggle>
+        <ion-toggle mode="md" [checked]="game.showErrors"></ion-toggle>
       </div>
       <span>Time: {{game.gameTime | async}} </span>
       <ion-icon
@@ -97,13 +97,11 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <a
-      target="_blank"
-      href="https://github.com/hariharan-dev/hariharan-dev.github.io"
-      rel="noreferrer"
-    >
-      <ion-icon id="github" name="logo-github"></ion-icon>
-    </a>
   </div>
+  <ion-fab vertical="top" horizontal="start" (click)="openGithub()">
+    <ion-fab-button>
+      <ion-icon name="logo-github"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
 <ion-footer> </ion-footer>

@@ -12,6 +12,10 @@
     }
     justify-content: space-around;
     align-items: center;
+    span {
+      width: 30%;
+      display: inline-block;
+    }
     ion-icon:first-of-type {
       border: 1px solid;
     }
@@ -19,7 +23,7 @@
   table {
     width: 100%;
     td {
-      height: 5vh;
+      height: 4vh;
       font-size: 1.5rem;
       color: var(--lightish-black);
       &:hover {
@@ -30,7 +34,7 @@
     }
   }
   table#player-sudoku {
-    height: 60vh;
+    height: 55vh;
     tr {
       td {
         border: 1px solid lightgray;
@@ -64,7 +68,7 @@
     height: 80%;
     margin: 3% 0;
     td {
-      height: 7vh;
+      height: 6vh;
       border: 1px solid lightgray;
     }
   }
@@ -79,8 +83,8 @@
       margin-left: 5%;
     }
   }
-  #github {
-    margin-top: 2%;
-    font-size: 2rem;
-  }
+}
+#github {
+  margin: 5% auto 2% auto;
+  font-size: 2rem;
 }

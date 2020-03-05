@@ -5,13 +5,14 @@ export class Sudoku {
     isSatisfied: boolean;
     cols: Cell[];
   }[] = [];
-  constructor(dummySudoku) {
-    for (let key in dummySudoku) {
+  constructor(inputSudoku) {
+    // builds up sudoku from  input
+    for (let key in inputSudoku) {
       this.rows[key] = {
-        isSatisfied: true, // no row is completely filled for any sudoku in beginning
+        isSatisfied: false, // no row is completely filled for any sudoku in beginning
         cols: []
       };
-      dummySudoku[key].forEach(eachCell => {
+      inputSudoku[key].forEach(eachCell => {
         this.rows[key].cols.push(new Cell(eachCell));
       });
     }
@@ -23,6 +24,14 @@ export class Sudoku {
     this.rows[row].isSatisfied = false;
   }
 
+  /**
+   * Whenever a value is updated we check that row`s validity and
+   * update it`s status
+   * @param row
+   * @param col
+   * @param value
+   * @param completedSudoku
+   */
   updateValue(
     row: number,
     col: number,
