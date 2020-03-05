@@ -1,16 +1,16 @@
 <ion-content [fullscreen]="true">
   <div id="container">
-    <h3>Sudoku</h3>
+    <h3>SUDOKU</h3>
     <ion-row class="game-header">
       <div (click)="game.showErrors = !game.showErrors">
-        Show Mistakes
+        SHOW MISTAKES
         <ion-toggle
           mode="md"
           color="medium"
           [checked]="game.showErrors"
         ></ion-toggle>
       </div>
-      <span>Time: {{game.gameTime | async}} </span>
+      <span>TIME: {{game.gameTime | async}} </span>
       <ion-icon
         color="primary"
         *ngIf="game.isPaused; else showPause"
@@ -54,7 +54,7 @@
           offsetLg="0.5"
         >
           <ion-button expand="full" (click)="newGame()">
-            New Game
+            NEW GAME
           </ion-button>
           <!-- One key listener for all keys -->
           <table id="keypad" (click)="keyListener($event)">
@@ -92,7 +92,7 @@
             [color]="game.eraseMode ? 'primary' : 'light'"
             (click)="game.toggleEraseMode()"
           >
-            Erase
+            ERASE
             <ion-icon name="bandage-outline"></ion-icon>
           </ion-button>
           <ion-button
@@ -100,7 +100,7 @@
             [color]="game.hintMode ? 'primary' : 'light'"
             (click)="game.toggleHintMode()"
           >
-            Hint
+            HINT
             <ion-icon name="bulb"></ion-icon>
           </ion-button>
         </ion-col>
