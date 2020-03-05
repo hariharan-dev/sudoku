@@ -1,0 +1,86 @@
+#container {
+  --lightish-black: #344861;
+  text-align: center;
+  width: 100%;
+  padding: 5% 12%;
+  background: #d3d3d329;
+  .game-header {
+    margin: 2% 0;
+    div {
+      display: flex;
+      align-items: center;
+    }
+    justify-content: space-around;
+    align-items: center;
+    ion-icon:first-of-type {
+      border: 1px solid;
+    }
+  }
+  table {
+    width: 100%;
+    td {
+      height: 5vh;
+      font-size: 1.5rem;
+      color: var(--lightish-black);
+      &:hover {
+        background-color: lightgray;
+        cursor: pointer;
+      }
+      transition: background-color 0.3s;
+    }
+  }
+  table#player-sudoku {
+    height: 60vh;
+    tr {
+      td {
+        border: 1px solid lightgray;
+        &:first-child {
+          border-left: 2px solid var(--lightish-black);
+        }
+        &:last-child,
+        &:nth-child(3),
+        &:nth-child(6) {
+          border-right: 2px solid var(--lightish-black);
+        }
+      }
+      &:nth-of-type(1) {
+        td {
+          border-top: 2px solid var(--lightish-black);
+        }
+      }
+      &:nth-of-type(3),
+      &:nth-of-type(6),
+      &:nth-of-type(9) {
+        td {
+          border-bottom: 2px solid var(--lightish-black);
+        }
+      }
+      .predefined {
+        font-weight: bold;
+      }
+    }
+  }
+  table#keypad {
+    height: 80%;
+    margin: 3% 0;
+    td {
+      height: 7vh;
+      border: 1px solid lightgray;
+    }
+  }
+  ion-icon {
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: var(--lightish-black);
+  }
+  .action-btns {
+    width: 48%;
+    ion-icon {
+      margin-left: 5%;
+    }
+  }
+  #github {
+    margin-top: 2%;
+    font-size: 2rem;
+  }
+}

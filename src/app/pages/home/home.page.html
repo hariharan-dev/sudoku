@@ -1,0 +1,109 @@
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <h3>Sudoku</h3>
+    <ion-row class="game-header">
+      <div (click)="game.showErrors = !game.showErrors">
+        Show Mistakes
+        <ion-toggle [checked]="game.showErrors"></ion-toggle>
+      </div>
+      <span>Time: {{game.gameTime | async}} </span>
+      <ion-icon
+        *ngIf="game.isPaused; else showPause"
+        name="play-outline"
+        (click)="game.startTimer()"
+      ></ion-icon>
+      <ng-template #showPause>
+        <ion-icon name="pause-outline" (click)="game.pauseTimer()"></ion-icon>
+      </ng-template>
+    </ion-row>
+    <ion-grid>
+      <ion-row>
+        <ion-col sizeLg="7" sizeXl="7" sizeMd="12" sizeSm="12" sizeXs="12">
+          <!-- One cell listener for all cells -->
+          <table id="player-sudoku" (click)="cellListener($event)">
+            <tr *ngFor="let row of playerSudokuRows">
+              <ng-container
+                *ngFor="let cell of game.playerSudoku.rows[row].cols; let i = index"
+              >
+                <td
+                  id="cell-{{row}}-{{i}}"
+                  [ngStyle]="game.showErrors && cell.value && cell.value !== game.completedSudoku.rows[row].cols[i].value && {'color': 'red'}"
+                  [class.predefined]="cell.isPredefined"
+                >
+                  {{cell.value}}
+                </td>
+              </ng-container>
+            </tr>
+          </table>
+        </ion-col>
+        <ion-col
+          sizeLg="4"
+          sizeXl="4"
+          sizeMd="12"
+          sizeSm="12"
+          sizeXs="12"
+          offsetLg="0.5"
+        >
+          <ion-button expand="full" (click)="newGame()">
+            New Game
+          </ion-button>
+          <!-- One key listener for all keys -->
+          <table id="keypad" (click)="keyListener($event)">
+            <tr>
+              <td
+                [ngStyle]="game.selectedKey == key && {'background-color': 'lightgray'}"
+                *ngFor="let key of [1,2,3]"
+                id="key-{{key}}"
+              >
+                {{key}}
+              </td>
+            </tr>
+            <tr>
+              <td
+                [ngStyle]="game.selectedKey == key && {'background-color': 'lightgray'}"
+                *ngFor="let key of [4,5,6]"
+                id="key-{{key}}"
+              >
+                {{key}}
+              </td>
+            </tr>
+            <tr>
+              <td
+                [ngStyle]="game.selectedKey == key && {'background-color': 'lightgray'}"
+                *ngFor="let key of [7,8,9]"
+                id="key-{{key}}"
+              >
+                {{key}}
+              </td>
+            </tr>
+          </table>
+
+          <ion-button
+            class="action-btns"
+            [color]="game.eraseMode ? 'primary' : 'light'"
+            (click)="game.toggleEraseMode()"
+          >
+            Erase
+            <ion-icon name="bandage-outline"></ion-icon>
+          </ion-button>
+          <ion-button
+            class="action-btns"
+            [color]="game.hintMode ? 'primary' : 'light'"
+            (click)="game.toggleHintMode()"
+          >
+            Hint
+            <ion-icon name="bulb"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <a
+      target="_blank"
+      href="https://github.com/hariharan-dev/hariharan-dev.github.io"
+      rel="noreferrer"
+    >
+      <ion-icon id="github" name="logo-github"></ion-icon>
+    </a>
+  </div>
+</ion-content>
+<ion-footer> </ion-footer>
