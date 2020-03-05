@@ -27,7 +27,7 @@
       font-size: 1.5rem;
       color: var(--lightish-black);
       &:hover {
-        background-color: lightgray;
+        background-color: lightgray !important;
         cursor: pointer;
       }
       transition: background-color 0.3s;
