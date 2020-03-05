@@ -4,16 +4,25 @@
     <ion-row class="game-header">
       <div (click)="game.showErrors = !game.showErrors">
         Show Mistakes
-        <ion-toggle mode="md" [checked]="game.showErrors"></ion-toggle>
+        <ion-toggle
+          mode="md"
+          color="medium"
+          [checked]="game.showErrors"
+        ></ion-toggle>
       </div>
       <span>Time: {{game.gameTime | async}} </span>
       <ion-icon
+        color="primary"
         *ngIf="game.isPaused; else showPause"
         name="play-outline"
         (click)="game.startTimer()"
       ></ion-icon>
       <ng-template #showPause>
-        <ion-icon name="pause-outline" (click)="game.pauseTimer()"></ion-icon>
+        <ion-icon
+          color="primary"
+          name="pause-outline"
+          (click)="game.pauseTimer()"
+        ></ion-icon>
       </ng-template>
     </ion-row>
     <ion-grid>
