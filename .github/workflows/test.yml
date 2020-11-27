@@ -1,4 +1,4 @@
-name: Node Continuous Integration
+name: Testcases
 
 on:
   pull_request:
