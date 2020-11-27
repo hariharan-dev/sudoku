@@ -44,4 +44,7 @@ describe('AppComponent', () => {
 
   // TODO: add more tests!
 
+  it('check', async () => {
+    expect(1).toBe(2);
+  });
 });
