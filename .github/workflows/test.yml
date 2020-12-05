@@ -5,7 +5,7 @@ on:
     branches: [master]
 
 jobs:
-  pull_submodule:
+  run_tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -13,11 +13,6 @@ jobs:
           git config --file=.gitmodules submodule.test_submodule.url https://hariharan-dev:${{ secrets.CI_PAT }}@github.com/hariharan-dev/test_submodule.git
           git submodule sync
           git submodule update --init --recursive
-  run_tests:
-    needs: pull_submodule
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: 12
