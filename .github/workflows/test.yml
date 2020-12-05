@@ -9,10 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: |
-          git config --file=.gitmodules submodule.test_submodule.url https://hariharan-dev:${{ secrets.CI_PAT }}@github.com/hariharan-dev/test_submodule.git
-          git submodule sync
-          git submodule update --init --recursive
+        with:
+          token: ${{ secrets.CI_PAT }
+          submodules: recursive
       - uses: actions/setup-node@v1
         with:
           node-version: 12
