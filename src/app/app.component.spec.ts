@@ -44,6 +44,10 @@ describe("AppComponent", () => {
 
   // TODO: add more tests!
 
+  it("check", async () => {
+    expect(2).toBe(2);
+  });
+  
   it("submodule test case", async () => {
     expect(ONE).toBe(1);
   });

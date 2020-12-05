@@ -5,20 +5,13 @@ on:
     branches: [master]
 
 jobs:
-  pull_submodule:
+  run_tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: |
-          git config --file .gitmodules --get-regexp url | while read url; do
-          git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.CI_PAT }}:${{ secrets.CI_PAT }}@github.com\//")
-          done
-          git submodule sync
-          git submodule update --init --recursive
-  job2:
-    needs: job1
-    runs-on: ubuntu-latest
-    steps:
+        with:
+          token: ${{ secrets.CI_PAT }}
+          submodules: recursive
       - uses: actions/setup-node@v1
         with:
           node-version: 12
