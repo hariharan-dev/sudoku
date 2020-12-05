@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          token: ${{ secrets.CI_PAT }
+          token: ${{ secrets.CI_PAT }}
           submodules: recursive
       - uses: actions/setup-node@v1
         with:
