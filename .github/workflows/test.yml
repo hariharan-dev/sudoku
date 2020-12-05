@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          git config --file=.gitmodules submodule.test_submodule.url https://${{ secrets.CI_PAT }}:${{ secrets.CI_PAT }}@github.com/hariharan-dev/test_submodule.git
+          git config --file=.gitmodules submodule.test_submodule.url https://hariharand96@gmail.com:${{ secrets.CI_PAT }}@github.com/hariharan-dev/test_submodule.git
           git submodule sync
           git submodule update --init --recursive
   run_tests:
