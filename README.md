@@ -1,5 +1,7 @@
 Sudoku (9 × 9) Puzzle
 
+https://hariharan-sudoku.firebaseapp.com/
+
 How to play :
 
 Player can pick the key they want to enter from the keypad displayed in right side and then simply click on the cell they want to enter.
